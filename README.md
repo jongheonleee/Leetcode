@@ -7,6 +7,6 @@ i want to work at USA as AI programer✈️
 </p>
 
 <ul>
-  <li>1️⃣Top 100 Liked Questions</li>
-  <li>2️⃣Top Interview Questions</li>
+  <li>1️⃣ Top 100 Liked Questions</li>
+  <li>2️⃣ Top Interview Questions</li>
 </ul>
