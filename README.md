@@ -1,0 +1,12 @@
+
+
+<h2><b>🎯Goal</b></h2>
+
+<p>
+i want to work at USA as AI programer✈️
+</p>
+
+<ul>
+  <li>1️⃣Top 100 Liked Questions</li>
+  <li>2️⃣Top Interview Questions</li>
+</ul>
