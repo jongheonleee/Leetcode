@@ -24,3 +24,16 @@
 	<li><code>1 &lt;= n &lt;= 20</code></li>
 </ul>
 </div>
+
+
+<div>
+	<h1>how to solve this(done yet) </h1>
+		<p>
+			<h2>
+			<ol>
+				<li>for a full BST must have an odd number of nodes</li>
+				<li>all internal nodes must be even, otherwise odd(leaves)</li>
+			</ol>
+			</h2>
+		</p>
+</div>
