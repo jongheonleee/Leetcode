@@ -1,5 +1,5 @@
 class Solution:
-    def countSubstrings(self, s: str) -> int:
+    def countSubstrings1(self, s: str) -> int:
         '''
         [optimize] center expansion
         
@@ -29,6 +29,23 @@ class Solution:
                 cnt += 1
                 left -= 1
                 right += 1
+                
+        return cnt
+    
+    def countSubstrings(self, s: str) -> int:
+        cnt, n, i = 0, len(s), 0
+        
+        while i < n:
+            j, k = i-1, i
+            
+            while k < n-1 and s[k] == s[k+1]:
+                k += 1
+                
+            cnt += (k-j) * (k-j+1) // 2
+            i, k = k+1, k+1
+            
+            while ~j and k < n and s[k] == s[j]:
+                j, k, cnt = j-1, k+1, cnt+1
                 
         return cnt
 
