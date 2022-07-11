@@ -32,7 +32,7 @@ class Solution:
                 
         return cnt
     
-    def countSubstrings(self, s: str) -> int:
+    def countSubstrings2(self, s: str) -> int:
         cnt, n, i = 0, len(s), 0
         
         while i < n:
@@ -48,6 +48,32 @@ class Solution:
                 j, k, cnt = j-1, k+1, cnt+1
                 
         return cnt
+    
+    def countSubstrings(self, s:str) -> int:
+        cnt, n = 0, len(s)
+        
+        dp = [[False] * n for _ in range(n)]
+        
+        for i in range(n-1, -1, -1):
+            dp[i][i] = True
+            cnt += 1
+            
+            for j in range(i+1, n):
+                if j - i == 1:
+                    dp[i][j] = s[i] == s[j]
+
+                else:
+                    dp[i][j] = (s[i] == s[j]) and dp[i+1][j-1]
+                
+                if dp[i][j]:
+                    cnt += 1
+                    
+        return cnt
+                        
+                    
+                    
+                
+
 
 
                 
