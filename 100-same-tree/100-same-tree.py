@@ -11,20 +11,16 @@ class Solution:
         :type q: TreeNode
         :rtype: bool
         """    
-        def dfs(n1, n2):
-            if not n1 and not n2:
-                return True
-            
-            elif not n1 or not n2:
-                return False
-            
-            
-            elif n1.val !=  n2.val:
-                return False
-            
-            return dfs(n1.left, n2.left) and dfs(n1.right, n2.right)
-        
-        return dfs(p, q)
+        # p and q are both None
+        if not p and not q:
+            return True
+        # one of p and q is None
+        if not q or not p:
+            return False
+        if p.val != q.val:
+            return False
+        return self.isSameTree(p.left, q.left) and \
+               self.isSameTree(p.right, q.right)
                 
         
 
