@@ -22,8 +22,11 @@ class Solution:
     
     def getRow(self, rowIndex):
         pascal = [1] * (rowIndex + 1)
+        print(pascal)
+        
         for i in range(2, rowIndex+1):
             for j in range(i-1, 0, -1):
+                print(j)
                 pascal[j] += pascal[j-1]
                 
         return pascal
