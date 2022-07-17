@@ -11,45 +11,26 @@ class Solution:
         :type q: TreeNode
         :rtype: bool
         """    
-        # p and q are both None
-        if not p and not q:
-            return True
-        # one of p and q is None
-        if not q or not p:
-            return False
-        if p.val != q.val:
-            return False
-        return self.isSameTree(p.right, q.right) and \
-               self.isSameTree(p.left, q.left)
-    
-    
-
-    def isSameTree_(self, p, q):
-        """
-        :type p: TreeNode
-        :type q: TreeNode
-        :rtype: bool
-        """    
-        from collections import deque
-        def check(p, q):
-            # if both are None
-            if not p and not q:
+        def dfs(n1, n2):
+            if not n1 and not n2:
                 return True
-            # one of p and q is None
-            if not q or not p:
-                return False
-            if p.val != q.val:
-                return False
-            return True
-        
-        deq = deque([(p, q),])
-        while deq:
-            p, q = deq.popleft()
-            if not check(p, q):
+            
+            elif not n1 or not n2:
                 return False
             
-            if p:
-                deq.append((p.left, q.left))
-                deq.append((p.right, q.right))
-                    
-        return True
+            
+            elif n1.val !=  n2.val:
+                return False
+            
+            return dfs(n1.left, n2.left) and dfs(n1.right, n2.right)
+        
+        return dfs(p, q)
+                
+        
+
+        
+
+                
+
+                
+                
