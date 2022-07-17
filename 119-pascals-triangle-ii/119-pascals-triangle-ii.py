@@ -1,5 +1,5 @@
 class Solution:
-    def getRow(self, rowIndex: int) -> List[int]:
+    def getRow_(self, rowIndex: int) -> List[int]:
         
         dp = [[1] * (n+1) for n in range(rowIndex+1)]
         
@@ -12,4 +12,10 @@ class Solution:
                     dp[i][j] = dp[i-1][j-1] + dp[i-1][j]
                 
         return dp[rowIndex]
-        
+    
+    def getRow(self, rowIndex: int) -> List[int]:
+        row = [1]
+        for _ in range(rowIndex):
+            row = [x + y for x, y in zip([0]+row, row+[0])]
+
+        return row
