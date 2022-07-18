@@ -55,6 +55,7 @@ class Solution:
         return ans
     
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        # 2. approach: bfs
         m, n = len(grid), len(grid[0])
         DIR = [0, 1, 0, -1, 0]
         
