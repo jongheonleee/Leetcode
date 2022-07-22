@@ -1,8 +1,9 @@
 class Solution:
     def isSubsequence(self, s, t):
-        s, t = ' ' + s, ' ' + t
+        # using dp
+        s, t = ' '+s, ' '+t
+        m, n = len(s), len(t)
         
-        n, m = len(t), len(s)
         dp = [[0] * m for _ in range(n)]
         
         for i in range(n):
