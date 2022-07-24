@@ -9,17 +9,20 @@ class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
         cand = []
         
-        def dfs(node, cnt) -> None:
+        def dfs(node, cnt) -> int:
             if node:
                 dfs(node.left, cnt + 1)
                 dfs(node.right, cnt + 1)
+
                 
             if node and node.left is None and node.right is None:
                 cand.append(cnt)
-                
-                
-        dfs(root, 1)
+                return
+        
+        dfs(root, 1)        
         return min(cand) if cand else 0
+        
+        
         
         
         
