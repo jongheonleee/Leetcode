@@ -1,4 +1,5 @@
 class Solution_mine:
+    # i only try to traverse graph by dfs but failed
     def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
         
         res = float('-inf')
@@ -27,6 +28,7 @@ class Solution_mine:
 
         return res
         
+# calculate the depth of graph, and return it   
 class Solution_DAG:
     def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
         rows = len(matrix)
@@ -34,6 +36,7 @@ class Solution_DAG:
             return 0
         
         cols = len(matrix[0])
+        # space for implementing graph
         indegree = [[0 for x in range(cols)] for y in range(rows)] 
         directions = [(0, -1), (0, 1), (1, 0), (-1, 0)]
         
@@ -44,7 +47,8 @@ class Solution_DAG:
                     if nx >= 0 and ny >= 0 and nx < rows and ny < cols:
                         if matrix[nx][ny] < matrix[x][y]:
                             indegree[x][y] += 1
-                            
+        
+        # append leaf vertices on queue
         queue = []
         for x in range(rows):
             for y in range(cols):
@@ -53,6 +57,7 @@ class Solution_DAG:
     
         path_len = 0
         while queue:
+            # first pop leaves and calculate the depth of graph
             sz = len(queue)
             for i in range(sz):
                 x, y = queue.pop(0)
@@ -67,6 +72,9 @@ class Solution_DAG:
         return path_len 
 class Solution:
     def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
+        # find longest decreasing path, result will be same
+        
+        # use dp for recording previous results and choose the max dp value of smaller neighbors
         def dfs(i, j):
             if not dp[i][j]:
                 val = matrix[i][j]
