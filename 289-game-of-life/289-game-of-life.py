@@ -4,6 +4,10 @@ class Solution:
         """
         Do not return anything, modify board in-place instead.
         """
+        
+        '''
+        deep copy, shallow copy 정확하게 차이점 공부하기
+        '''
         if board is None:
             return
         
