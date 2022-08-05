@@ -11,17 +11,11 @@ class Solution:
             if root.val == val:
                 return root
             
-            elif root.val > val:
-                if root.left:
-                    return dfs(root.left)
+            elif root.val > val and root.left:
+                return dfs(root.left)
                 
-            else:
-                if root.right:
-                    return dfs(root.right)
+            elif root.val < val and root.right:
+                return dfs(root.right)
                 
-                    
-                
-            
-            
         return dfs(root) if root else None
         
