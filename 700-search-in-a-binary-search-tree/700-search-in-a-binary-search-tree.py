@@ -7,7 +7,7 @@
 class Solution:
     def searchBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
         
-        def dfs(root): 
+        def dfs(root: Optional[TreeNode]) -> Optional[TreeNode]: 
             if root.val == val:
                 return root
             
