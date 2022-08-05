@@ -31,6 +31,8 @@ class Solution:
         
         while p2:
             if p1.val == p2.val:
+                # most important thing is that i have to move p2 to p2.next
+                # then, connect p1.next with p2
                 p2 = p2.next
                 p1.next = p2
                 
