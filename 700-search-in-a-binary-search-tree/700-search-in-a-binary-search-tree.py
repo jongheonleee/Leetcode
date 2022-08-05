@@ -15,15 +15,9 @@ class Solution:
                 if root.left:
                     return dfs(root.left)
                 
-                else:
-                    return None
-                
             else:
                 if root.right:
                     return dfs(root.right)
-                
-                else:
-                    return None
                 
                     
                 
