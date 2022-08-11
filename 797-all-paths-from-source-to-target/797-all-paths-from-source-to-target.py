@@ -1,5 +1,5 @@
 class Solution:
-    def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
+    def allPathsSourceTarget_(self, graph: List[List[int]]) -> List[List[int]]:
         res, n = [], len(graph)
         
         def dfs(formed):
@@ -13,6 +13,21 @@ class Solution:
 
         dfs([0])
         return res
+    
+    def allPathsSourceTarget(self, graph: List[List[int]]) -> List[List[int]]:
+        res = []
+        
+        def dfs(v, path):
+            if v == len(graph)-1:
+                res.append(path)
+                return
+                
+            for nv in graph[v]:
+                dfs(nv, path + [nv])
+                
+        dfs(0, [0])
+        return res
+        
         
                     
                 
