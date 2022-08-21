@@ -38,11 +38,10 @@ class Solution:
         
         for r in range(row):
             for c in range(col):
-                # dp[c+1]
-                # dp[c]
                 dp_r_c_nxt = dp[c+1]
                 
                 if matrix[r][c]:
+                    # dp[i+1][j+1] = min(dp[i][j+1], dp[i+1][j], dp[i][j]) + 1
                     dp[c+1] = min(dp[c+1], dp[c], dp_r_c) + 1
                     ans += dp[c+1]
                     
