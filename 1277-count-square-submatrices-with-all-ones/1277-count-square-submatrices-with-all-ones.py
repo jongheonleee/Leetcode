@@ -16,7 +16,7 @@ class Solution:
             
         return sum(dp(r, c) for r in range(row) for c in range(col))
     
-    def countSquares(self, matrix: List[List[int]]) -> int:
+    def countSquares_2(self, matrix: List[List[int]]) -> int:
         row, col = len(matrix), len(matrix[0])
         dp = [[0] * (col+1) for _ in range(row+1)]
         ans = 0
@@ -27,6 +27,30 @@ class Solution:
                     dp[r+1][c+1] = min(dp[r][c+1], dp[r+1][c], dp[r][c]) + 1
                     ans += dp[r+1][c+1]
                     
+        return ans
+    
+    def countSquares(self, matrix: List[List[int]]) -> int:
+        row, col = len(matrix), len(matrix[0])
+        dp = [0] * (col+1)
+        ans = 0
+        
+        dp_r_c = 0
+        
+        for r in range(row):
+            for c in range(col):
+                # dp[c+1]
+                # dp[c]
+                dp_r_c_nxt = dp[c+1]
+                
+                if matrix[r][c]:
+                    dp[c+1] = min(dp[c+1], dp[c], dp_r_c) + 1
+                    ans += dp[c+1]
+                    
+                else:
+                    dp[c+1] = 0
+                    
+                dp_r_c = dp_r_c_nxt
+                
         return ans
 
         
