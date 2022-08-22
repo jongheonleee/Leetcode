@@ -16,9 +16,9 @@ class Solution:
         return c
     
     def tribonacci(self, n: int) -> int:
-        DP = [0, 1, 1]
+        dp = [0, 1, 1]
         
         for i in range(3, n+1):
-            DP[i%3] = sum(DP)
+            dp[i%3] = sum(dp)
             
-        return DP[n%3]
+        return dp[n%3]
