@@ -5,19 +5,19 @@
 #         self.left = left
 #         self.right = right
 class FindElements:
-
     def __init__(self, root: Optional[TreeNode]):
         self.root = root
-        self.recover(self.root)
+        self.seen = set()
+        self.recover(self.root, self.seen)
 
-    def recover(self, root):
+    def recover(self, root, seen):
         queue = collections.deque([(root, 0)])
         
         while queue:
             node, val = queue.popleft()
             
             node.val = val
-
+            seen.add(node.val)
             
             if node.left:
                 queue.append((node.left, 2*val+1))
@@ -28,23 +28,10 @@ class FindElements:
        
 
     def find(self, target: int) -> bool:
-        queue = collections.deque([self.root])
+        if target in self.seen:
+            return True
         
-        while queue:
-            node = queue.popleft()
-            
-            if node.val == target:
-                return True
-            
-            elif node.val < target:
-                if node.left:
-                    queue.append(node.left)
-                
-                if node.right:
-                    queue.append(node.right)
-                    
-            else:
-                return False
+        return False
   
             
                 
