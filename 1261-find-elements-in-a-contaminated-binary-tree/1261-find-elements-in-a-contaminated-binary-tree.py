@@ -36,7 +36,7 @@ class FindElements:
             if node.val == target:
                 return True
             
-            if node.val < target:
+            elif node.val < target:
                 if node.left:
                     queue.append(node.left)
                 
