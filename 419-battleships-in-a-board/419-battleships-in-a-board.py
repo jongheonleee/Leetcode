@@ -1,5 +1,7 @@
 class Solution:
-    def countBattleships(self, board: List[List[str]]) -> int:
+    def countBattleships_1(self, board: List[List[str]]) -> int:
+        # first approach 
+        # using set and DFS 
         cnt = 0
         m, n = len(board), len(board[0])
         vis = set()
@@ -38,6 +40,20 @@ class Solution:
                     cnt += 1
                     
                         
+        return cnt
+    
+    def countBattleships(self, board: List[List[str]]) -> int:
+        cnt = 0
+        for r in range(len(board)):
+            for c in range(len(board[0])):
+                if board[r][c] == 'X':
+                    var = 1
+                    
+                    if (r > 0 and board[r-1][c] == 'X') or (c > 0 and board[r][c-1] == 'X'):
+                        var = 0
+                        
+                    cnt += var
+                
         return cnt
                         
                     
