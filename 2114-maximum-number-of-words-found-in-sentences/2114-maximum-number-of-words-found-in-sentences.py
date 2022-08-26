@@ -1,5 +1,5 @@
 class Solution:
-    def mostWordsFound(self, sentences: List[str]) -> int:
+    def mostWordsFound_mine(self, sentences: List[str]) -> int:
         max_cnt = float('-inf')
         
         for s in sentences:
@@ -12,4 +12,6 @@ class Solution:
                 
             
         return max_cnt
-        
+    
+    def mostWordsFound(self, sentences: List[str]) -> int:
+        return max(s.count(' ') for s in sentences) + 1
