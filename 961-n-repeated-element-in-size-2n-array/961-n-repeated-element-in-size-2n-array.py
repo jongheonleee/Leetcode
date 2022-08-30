@@ -5,12 +5,18 @@ class Solution:
         
         # make hash_table which key:num - val:number of num
         hash_table = collections.defaultdict(int)
-        for num in nums:
-            hash_table[num] += 1
+        for key in nums:
+            if hash_table.get(key):
+                hash_table[key] += 1
+                
+            else:
+                hash_table[key] = 1
+                
             
-        for num in nums:
-            if hash_table[num] == n:
-                return num
+        print(hash_table)
             
-        return -1
+        for key in nums:
+            if hash_table[key] == n:
+                return key
+            
         
