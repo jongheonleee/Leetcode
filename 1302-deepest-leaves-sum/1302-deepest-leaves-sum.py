@@ -7,7 +7,6 @@
 class Solution:
     def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
         deepest_leaves = collections.defaultdict(list)
-        max_level = -1
         
         def dfs(root, crnt_level):
             if root is None:
