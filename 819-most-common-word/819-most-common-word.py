@@ -15,7 +15,7 @@ class Solution:
         if word != "":
             cnt_word[word] += 1
                 
-        print(cnt_word)
+  
         return max(cnt_word, key=cnt_word.get)
                 
 
