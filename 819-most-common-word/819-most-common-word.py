@@ -1,22 +1,32 @@
 class Solution:
     def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
-        word = ""
         cnt_word = collections.defaultdict(int)
-        for char in paragraph:
-            if char.isalpha():
-                word += char.lower()
+        
+        def find_word(left, right) -> int:
+            while right < len(paragraph) and paragraph[right].isalpha():
+                right += 1
             
+            if paragraph[left:right].lower() not in banned:
+                cnt_word[paragraph[left:right].lower()] += 1
+                
+            return right 
+        
+        idx = 0
+        while idx < len(paragraph):
+            if paragraph[idx].isalpha():
+                next_i = find_word(idx, idx)
+                idx = next_i
+                
             else:
-                if word not in banned + [""]:
-                    cnt_word[word] += 1
-                    
-                word = ""
+                idx += 1
+
                 
-        if word != "":
-            cnt_word[word] += 1
-                
-  
         return max(cnt_word, key=cnt_word.get)
+                
+        
+            
+        
+
                 
 
         
