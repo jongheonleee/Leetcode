@@ -1,20 +1,20 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        def check(left, right) -> bool:
-            while left <= right:
-                if new_str[left] != new_str[right]:
-                    return False
-                
-                left += 1
-                right -= 1
-                
-            return True
-        
-        new_str = ''
-        
+        # processing given string s
+        proc_s = ''
         for char in s:
             if char.isalnum():
-                new_str += char.lower()
+                proc_s += char.lower()
                 
-        return check(0, len(new_str)-1)
+        # check if processing string s is palindrome or not
+        left, right = 0, len(proc_s)-1
+        while left <= right:
+            if proc_s[left] != proc_s[right]:
+                return False
+            
+            left += 1
+            right -= 1
+            
+        return True
+            
         
