@@ -1,17 +1,12 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        # extract alphabet/number in s then push deque
-        # deque help my to run this algoritm more fast compare with when i use list 
-        lst = collections.deque()
+        processing_s = ''
         
-        for char in s:
-            if char.isalnum():
-                lst.append(char.lower())
+        for c in s:
+            if c.isalnum():
+                processing_s += c.lower()
                 
-        # check if lst is palindrome or not
-        while len(lst) > 1:
-            if lst.pop() != lst.popleft():
-                return False
-            
-        return True
+        return processing_s == processing_s[::-1]
+        
+    
         
