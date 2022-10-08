@@ -1,25 +1,13 @@
 class Solution:
     def mostCommonWord(self, paragraph: str, banned: List[str]) -> str:
-        # processing given string -> push word in list 
-        cnt_word = collections.Counter()
-        lst = []
-        word = ''
+        paragraph = paragraph.lower()
+        words = re.sub(r'[^A-Za-z]', " ", paragraph.lower()).split()
+        processing_words = [ word for word in words if word not in banned]
+        word_cnt = collections.Counter(processing_words)
         
-        for char in paragraph:
-            if char.isalpha():
-                word += char.lower()
-                
-            elif word != '':
-                if word not in banned:
-                    lst.append(word)
-                
-                word = ''
-                
-        if word != '':
-            lst.append(word)
+        return word_cnt.most_common()[0][0] 
+            
         
-        cnt_word = collections.Counter(lst)
-        return cnt_word.most_common()[0][0]
         
         
 
