@@ -14,13 +14,17 @@ class Solution:
         # using two pointers
         while left < right:
             if height[left] <= height[right]:
+                # compare which one is bigger between a highest wall that i passed and a wall that i stand
                 max_l = max(max_l, height[left])
+                # trap a amount of water are subtract between a highest wall that i passed and a wall that i stand
                 water += max_l - height[left]
                 
                 left += 1
                 
             else:
+                # compare which one is bigger between a highest wall that i passed and a wall that i stand
                 max_r = max(max_r, height[right])
+                # trap a amount of water are subtract between a highest wall that i passed and a wall that i stand
                 water += max_r - height[right]
                 
                 right -= 1
