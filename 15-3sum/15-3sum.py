@@ -1,40 +1,50 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        res = []
+        # exception case
+        # if not any(nums) or (len(nums) == 3 and sum(nums) == 0):
+        #     return [nums[0:3]]
+
+        # for using two-pointers
         nums.sort()
+        # store answer
+        ans:list = []
         
-        def find_target(sub_nums: List[int], target: int) -> None:
-            left, right = 0, len(sub_nums)-1
-            
+        def find(left: int, right: int, target: int) -> None:
             while left < right:
-                if target == sub_nums[left] + sub_nums[right]:
-                    res.append([-target, sub_nums[left], sub_nums[right]])
-                    
-                    while left < right and sub_nums[left] == sub_nums[left+1]:
+                if target > nums[left] + nums[right]:
+                    while left < right and nums[left] == nums[left+1]:
                         left += 1
                         
-                    while left < right and sub_nums[right] == sub_nums[right-1]:
+                    left += 1
+                    
+                elif target < nums[left] + nums[right]:
+                    while left < right and nums[right] == nums[right-1]:
                         right -= 1
                         
-                    left += 1
                     right -= 1
-                    
-                elif target > sub_nums[left] + sub_nums[right]:
-                    left += 1
                     
                 else:
+                    ans.append([-target, nums[left], nums[right]])
+                    while left < right and nums[left] == nums[left+1]:
+                        left += 1
+                        
+                    while left < right and nums[right] == nums[right-1]:
+                        right -=1
+                    left += 1
                     right -= 1
+                
+            return None
                     
             
             
-        for i, target in enumerate(nums):
+        # select a number as target
+        for i in range(0, len(nums)):
             if i > 0 and nums[i] == nums[i-1]:
                 continue
                 
-            find_target(nums[i+1:], -target)
-            
-        return res
-                
+            find(i+1, len(nums)-1, -nums[i])
+
+        return ans
             
                     
                 
