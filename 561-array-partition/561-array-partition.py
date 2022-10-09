@@ -1,13 +1,17 @@
 class Solution:
     def arrayPairSum(self, nums: List[int]) -> int:
-        # 차이가 얼마 안나는 요소들로 묶어주기
+        # using greedy
+        # sort given list
+        # and then sum of values which have 2*n as index
         nums.sort()
-        lst = []
+        ans:int = 0
         
-        for i in range(0, len(nums)-1, 2):
-            lst.append(min(nums[i], nums[i+1]))
+        for i in range(0, len(nums), 2):
+            ans += nums[i]
             
-        return sum(lst)
+        return ans
+        
+        
         
         
 
