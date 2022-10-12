@@ -5,82 +5,98 @@
 #         self.next = next
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        # append all node.val in list
-        # then solve this by two pointers
-        lst = []
-        crnt_node = head
-        while crnt_node:
-            lst.append(crnt_node.val)
-            crnt_node = crnt_node.next
-            
-        left, right = 0, len(lst)-1
+#         def check(l1: int, l2:int) -> bool:
+#             pass
         
-        while left <= right:
-            if lst[left] != lst[right]:
-                return False
+        
+        length, crnt_node = 0, head
+        while crnt_node:
+            length += 1
+            crnt_node = crnt_node.next
+          
+        if length == 1:
+            return True
+        
+        elif length%2 == 0:
+            # length is an even
+            mid, mid_node = length//2, head
             
-            left += 1
-            right -= 1
-            
-        return True
-    
-#     def isPalindrome(self, head: Optional[ListNode]) -> bool:
-#         ll_len = 0
-#         crnt_node = head
-#         while crnt_node:
-#             ll_len += 1
-#             crnt_node = crnt_node.next
-            
-#         if ll_len % 2 == 0:
-#             mid = head
-#             for _ in range((ll_len//2)-1):
-#                 mid = mid.next
+            while mid-1 != 0:
+                mid -= 1
+                mid_node = mid_node.next
                 
-#             head2, mid.next = mid.next, None
+            head2, mid_node.next = mid_node.next, None
+            prev, crnt = None, head2
             
-#             prev, crnt, next = None, head2, head2.next
+            while crnt:
+                next = crnt.next
+                crnt.next, crnt, prev = prev, next, crnt
+                
+            l1, l2 = head, prev
             
-#             while crnt:
-#                 crnt.next = prev
-#                 prev = crnt
-#                 crnt = next
-#                 next = crnt.next if crnt else None
+            while l1 and l2:
+                if l1.val != l2.val:
+                    return False
+                
+                l1, l2 = l1.next, l2.next
+            return True
+        
+        else:
+            # length is an odd
+            mid, mid_node = (length//2)+1, head
+            prev = None
+            
+            while mid-1 != 0:
+                mid -= 1
+                prev, mid_node = mid_node, mid_node.next
+                
+            head2, prev.next = mid_node.next, None
+            prev, crnt = None, head2
+            
+            while crnt:
+                next = crnt.next
+                crnt.next, crnt, prev = prev, next, crnt
+                
+            l1, l2 = head, prev
+            
+            while l1 and l2:
+                if l1.val != l2.val:
+                    return False
+                
+                l1, l2 = l1.next, l2.next
+            return True
+        
+            
                 
             
-#             l1, l2 = head, head2
-#             while l1 and l2:
-#                 if l1.val != l2.val:
-#                     return False
+            
+        
                 
-#                 l1, l2 = l1.next, l2.next
+            
                 
-#             return True
+                
+            
+                
+                
+                
+
+
+                
+            
+                
+            
+                
+            
+            
+            
+            
         
 #         else:
-#             mid = head
-#             for _ in range((ll_len//2)+1):
-#                 mid = mid.next
-                
-#             head2, mid.next = mid, None
-            
-#             prev, crnt, next = None, head2, head2.next
-            
-#             while crnt:
-#                 crnt.next = prev
-#                 prev = crnt
-#                 crnt = next
-#                 next = crnt.next if crnt else None
-                
-            
-#             l1, l2 = head, head2
-#             while l1 and l2:
-#                 if l1.val != l2.val:
-#                     return False
-                
-#                 l1, l2 = l1.next, l2.next
-                
-#             return True
-            
+#             # length is an odd
+#             pass
+        
+        
+    
             
             
             
