@@ -22,14 +22,12 @@ class Solution:
                     l2 = l2.next
                     
             elif l1:
-                while l1:
-                    crnt_node.next = l1
-                    crnt_node, l1 = crnt_node.next, l1.next
+                crnt_node.next = l1
+                break
                     
             else:
-                while l2:
-                    crnt_node.next = l2
-                    crnt_node, l2 = crnt_node.next, l2.next
+                crnt_node.next = l2
+                break
                     
         return dummy_node.next
                 
