@@ -1,8 +1,6 @@
 class Solution:
     def numJewelsInStones(self, jewels: str, stones: str) -> int:
-        cnt_j = collections.defaultdict(int)
-        for s in stones:
-            cnt_j[s] += 1
+        cnt_j = collections.Counter(stones)
             
         ans = 0
         
