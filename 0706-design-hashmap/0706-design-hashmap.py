@@ -18,7 +18,6 @@ class MyHashMap:
         if key in self.map:
             self.map[key] = None
             del key
-            return None
 
         
         
