@@ -32,7 +32,8 @@ class Solution:
             
         return res[::-1]
     
-    def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def levelOrderBottom2(self, root: Optional[TreeNode]) -> List[List[int]]:
+        # using dfs
         res = []
         self.dfs(root, 0, res)
         return res
@@ -47,4 +48,21 @@ class Solution:
             self.dfs(root.right, level+1, res)
             
         return None
+    
+    def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
+        # using dfs by stack
+        # tuple => (node, level)
+        stack, res = [(root, 0)], []
+        while stack:
+            node, level = stack.pop()
+            if node:
+                if len(res) < level + 1:
+                    res.insert(0, [])
+
+                res[-(level+1)].append(node.val)
+                stack.append((node.right, level+1))
+                stack.append((node.left, level+1))
+            
+        return res
+        
         
