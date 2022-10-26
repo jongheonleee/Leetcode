@@ -5,7 +5,8 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
+    def levelOrderBottom1(self, root: Optional[TreeNode]) -> List[List[int]]:
+        # this is my idea
         if root is None:
             return []
         
@@ -30,4 +31,20 @@ class Solution:
             res.append(tmp)
             
         return res[::-1]
+    
+    def levelOrderBottom(self, root: Optional[TreeNode]) -> List[List[int]]:
+        res = []
+        self.dfs(root, 0, res)
+        return res
+    
+    def dfs(self, root:Optional[TreeNode], level: int, res: list) -> None:
+        if root:
+            if len(res) < level + 1:
+                res.insert(0, [])
+                
+            res[-(level+1)].append(root.val)
+            self.dfs(root.left, level+1, res)
+            self.dfs(root.right, level+1, res)
+            
+        return None
         
