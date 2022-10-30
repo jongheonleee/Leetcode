@@ -4,34 +4,45 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        dummy_node = ListNode(-1)
-        crnt_node, tens, units = dummy_node, 0, 0
+    # reverse LL
+    def reverseList(self, head: ListNode) -> ListNode:
+        node, prev = head, None
         
-        while l1 or l2:
-            if l1 and l2:
-                sum = l1.val + l2.val + tens
-                l1, l2 = l1.next, l2.next
-                
-            elif l1:
-                sum = l1.val + tens
-                l1 = l1.next
-                
-            else:
-                sum = l2.val + tens
-                l2 = l2.next
-                
-            tens, units = sum//10, sum%10
-            new_node = ListNode(units)
-            crnt_node.next = new_node
-            crnt_node = crnt_node.next
+        while node:
+            next, node.next = node.next, prev
+            prev, node = node, next
             
-        if tens == 1:
-            crnt_node.next = ListNode(1)
+        return prev
+    
+    # transform LL into list
+    def toList(self, node: ListNode) -> List:
+        list: List = []
+        while node:
+            list.append(node.val)
+            node = node.next
             
+        return list
+    
+    # transform list into LL
+    def toReversedLinkedList(self, result: str) -> ListNode:
+        prev: ListNode = None
+        for r in result:
+            node = ListNode(r)
+            node.next = prev
+            prev = node
             
-                
-        return dummy_node.next
+        return node
+    
+    # add two list
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        a = self.toList(self.reverseList(l1))
+        b = self.toList(self.reverseList(l2))
+        
+        resultStr = int(''.join(str(e) for e in a)) + int(''.join(str(e) for e in b))
+        
+        return self.toReversedLinkedList(str(resultStr))
+        
+
             
                 
                 
